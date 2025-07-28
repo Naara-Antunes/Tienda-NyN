@@ -1,88 +1,100 @@
-// Variables: Colores y fuentes
-$color-principal: #ff69b4;
-$color-fondo: #ffffff;
-$fuente-principal: "Poppins", sans-serif;
-
-// Mixins: Para reutilizar estilos
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+:root {
+  --color-principal: #ff69b4;
+  --color-fondo: #ffffff;
+  --fuente-principal: "Poppins", sans-serif;
 }
 
-// Reset básico
+/* RESET BÁSICO */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-// Tipografía general
+/*  TIPOGRAFÍA GENERAL*/
 body {
-  font-family: $fuente-principal;
-  background-color: $color-fondo;
-  color: $color-principal;
+  font-family: var(--fuente-principal);
+  background-color: var(--color-fondo);
+  color: var(--color-principal);
 }
 
-// Header
+/*HEADER */
 header {
   padding: 1rem;
-  @include flex-center;
-  background-color: $color-principal;
-  color: $color-fondo;
-
-  h1 {
-    font-size: 2rem;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-principal);
+  color: var(--color-fondo);
 }
 
-// Botones
+header h1 {
+  font-size: 2rem;
+}
+
+/* BOTONES*/
 .btn {
-  background-color: darken($color-principal, 10%);
-  color: $color-fondo;
+  background-color: #e91e63; /* darken(#ff69b4, 10%) */
+  color: var(--color-fondo);
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   cursor: pointer;
-
-  &:hover {
-    background-color: darken($color-principal, 20%);
-  }
+  transition: background-color 0.3s ease;
 }
 
-// Productos
+.btn:hover {
+  background-color: #c2185b; /* darken(#ff69b4, 20%) */
+}
+
+/*PRODUCTO */
 .producto {
-  border: 1px solid lighten($color-principal, 30%);
+  border: 1px solid #ffb3d9; /* lighten(#ff69b4, 30%) */
   padding: 1rem;
   border-radius: 8px;
   margin-bottom: 1rem;
+}
 
-  img {
-    max-width: 100%;
-    border-radius: 5px;
+.producto img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.producto .titulo {
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+/* ANIMACIONES */
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
   }
-
-  .titulo {
-    font-weight: bold;
-    margin-top: 0.5rem;
+  50% {
+    transform: scale(1.05);
   }
 }
 
-// 🌐 Media Queries para responsividad
+.logorotativo {
+  animation: pulse 2s infinite ease-in-out;
+}
 
-// Móviles (hasta 575px)
+/*MEDIA QUERIES - RESPONSIVE */
+
+/*  MÓVILES (hasta 575px) */
 @media (max-width: 575px) {
   body {
-    background-color: #ffe6f0; // Rosa claro para ver que funciona
+    background-color: #ffe6f0;
   }
 
   header {
     padding: 0.5rem;
+  }
 
-    h1 {
-      font-size: 1.5rem;
-      text-align: center;
-    }
+  header h1 {
+    font-size: 1.5rem;
+    text-align: center;
   }
 
   .btn {
@@ -93,15 +105,15 @@ header {
   .producto {
     padding: 0.5rem;
     margin-bottom: 0.75rem;
+  }
 
-    .titulo {
-      font-size: 1rem;
-      text-align: center;
-    }
+  .producto .titulo {
+    font-size: 1rem;
+    text-align: center;
   }
 }
 
-// Tablets (576px a 768px)
+/*  TABLETS (576px a 768px) */
 @media (min-width: 576px) and (max-width: 768px) {
   header h1 {
     font-size: 1.8rem;
@@ -115,23 +127,33 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
 
-    img {
-      max-width: 80%;
-    }
+  .producto img {
+    max-width: 80%;
   }
 }
 
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
+/*    UTILIDADES ADICIONALES */
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.logorotativo {
-  animation: pulse 2s infinite ease-in-out;
+.color-principal-claro {
+  color: #ffb3d9; /* lighten(#ff69b4, 30%) */
+}
+
+.color-principal-oscuro {
+  color: #c2185b; /* darken(#ff69b4, 20%) */
+}
+
+.bg-principal-claro {
+  background-color: #ffb3d9;
+}
+
+.bg-principal-oscuro {
+  background-color: #c2185b;
 }
