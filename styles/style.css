@@ -1,9 +1,11 @@
+/* Reset CSS */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Layout Principal */
 .layout {
   display: grid;
   grid-template-areas:
@@ -13,6 +15,8 @@
     "aside"
     "footer";
 }
+
+/* Header */
 .header {
   display: flex;
   justify-content: space-between;
@@ -24,16 +28,43 @@
   z-index: 1000;
   font-family: "Roboto", sans-serif;
 }
+
+/* Logo */
 .logorotativo {
   width: 100px;
   height: auto;
   transition: transform 0.3s ease, opacity 0.3s ease;
-  opacity: 2;
+  opacity: 0;
   transform: scale(0.8);
-  animation: aparecersuave 1.1s ease-out forwards;
-  animation-delay: 0.4s;
+  animation: aparecerSuave 1.1s ease-out forwards, pulse 2s infinite;
+  animation-delay: 0.4s, 1.5s;
 }
 
+/* Animaciones */
+@keyframes aparecerSuave {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Menú de Navegación */
 .menu {
   display: flex;
   gap: 40px;
@@ -53,6 +84,7 @@
   color: #ffc107;
 }
 
+/* Botón Login */
 .boton-login {
   background-color: #f5f5dc;
   color: #2e2e2e;
@@ -63,17 +95,20 @@
   font-family: "Roboto", sans-serif;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .boton-login:hover {
   background-color: #e0dcb8;
 }
 
+/* Navegación */
 .nav {
-  grid-template-areas: nav;
+  grid-area: nav;
   background-color: beige;
 }
 
+/* Slogan */
 .slogan {
   background-color: #f5f5dc;
   font-family: "Domine", serif;
@@ -84,12 +119,53 @@
   border-radius: 8px;
 }
 
+/* Main Content */
 .main {
-  grid-template-areas: main;
+  grid-area: main;
   background-color: beige;
 }
 
-/* Lista de  precios */
+/* Banner Principal */
+.banner-principal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+  background-color: #f5f5dc;
+}
+
+.banner-principal img {
+  max-width: 90%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Productos */
+.fila-productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin: 60px auto 40px;
+  max-width: 1200px;
+}
+
+.producto {
+  background-color: #f5f5dc;
+  padding: 20px;
+  width: 250px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.producto img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
 
 .producto h3 {
   font-size: 1.1rem;
@@ -117,55 +193,7 @@
   background-color: #d5cba1;
 }
 
-.fila-productos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  margin: 60px auto 40px;
-  max-width: 1200px;
-}
-
-.producto {
-  background-color: #f5f5dc;
-  padding: 20px;
-  width: 250px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.producto img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  object-fit: cover;
-}
-
-/* Banner pagina principal */
-.banner-principal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 0;
-  background-color: #f5f5dc;
-}
-.banner-principal img {
-  max-width: 90%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.footer-secciones {
-  background-color: #f0e8cb; /* Beige cálido tipo arena */
-  padding: 40px 20px;
-  border-top: 2px solid #dcd3aa;
-  font-family: "Roboto", sans-serif;
-  color: #3e3e3e;
-  text-align: center;
-}
-/* Inicio de sesion */
+/* Formularios */
 .form-contenedor {
   display: flex;
   justify-content: center;
@@ -184,13 +212,61 @@
   max-width: 400px;
 }
 
+/* Footer */
+.footer-secciones {
+  background-color: #f5f5dc;
+  padding: 40px 20px;
+  border-top: 2px solid #dcd3aa;
+  font-family: "Roboto", sans-serif;
+  color: #3e3e3e;
+  text-align: center;
+}
+
+.footer-info {
+  background-color: #f0e8cb;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-info a:hover {
+  color: #007bff;
+}
+
+.footer-social {
+  margin: 20px 0;
+}
+
+.footer-social span {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.footer-social img {
+  width: 24px;
+  margin: 0 5px;
+  transition: transform 0.3s ease;
+}
+
+.footer-social img:hover {
+  transform: scale(1.2);
+}
+
+.footer-copy {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Media Queries - Responsive */
 @media (max-width: 768px) {
-  .nav {
+  .header {
     flex-direction: column;
     align-items: center;
     gap: 20px;
     padding: 15px;
-    background-color: #ffe6f0; /* Rosa claro solo en pantallas pequeñas */
   }
 
   .menu {
@@ -204,71 +280,7 @@
     transform: scale(0.8);
     animation: aparecerSuave 1.5s ease-out forwards;
     animation-delay: 0.3s;
-    @keyframes pulse {
-      0%,
-      100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
-    }
-
-    .logorotativo {
-      animation: pulse 2s infinite ease-in-out;
-    }
   }
-
-  /*FOOTER */
-
-  .footer-secciones {
-    background-color: #f5f5dc;
-    padding: 40px 20px;
-    border-top: 2px solid #dcd3aa;
-    font-family: "Roboto", sans-serif;
-    text-align: center;
-    color: #3e3e3e;
-  }
-
-  .footer-info {
-    background-color: #f0e8cb;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .footer-info a:hover {
-    color: #007bff;
-  }
-
-  .footer-social {
-    margin: 20px 0;
-  }
-
-  .footer-social span {
-    font-weight: bold;
-    margin-right: 10px;
-  }
-
-  .footer-social img {
-    width: 24px;
-    margin: 0 5px;
-    transition: transform 0.3s ease;
-  }
-
-  .footer-social img:hover {
-    transform: scale(1.2);
-  }
-
-  .footer-copy {
-    margin-top: 15px;
-    font-size: 0.9rem;
-    opacity: 0.8;
-  }
-
-  /*PRODUCTOS DEL CARRITO */
 
   .fila-productos {
     flex-direction: column;
@@ -291,5 +303,10 @@
 
   .form-contenedor form {
     max-width: 90%;
+  }
+
+  .slogan {
+    font-size: 1.5rem;
+    padding: 15px 20px;
   }
 }
