@@ -1,0 +1,137 @@
+// Variables: Colores y fuentes
+$color-principal: #ff69b4;
+$color-fondo: #ffffff;
+$fuente-principal: "Poppins", sans-serif;
+
+// Mixins: Para reutilizar estilos
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Reset básico
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Tipografía general
+body {
+  font-family: $fuente-principal;
+  background-color: $color-fondo;
+  color: $color-principal;
+}
+
+// Header
+header {
+  padding: 1rem;
+  @include flex-center;
+  background-color: $color-principal;
+  color: $color-fondo;
+
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+// Botones
+.btn {
+  background-color: darken($color-principal, 10%);
+  color: $color-fondo;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($color-principal, 20%);
+  }
+}
+
+// Productos
+.producto {
+  border: 1px solid lighten($color-principal, 30%);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+
+  img {
+    max-width: 100%;
+    border-radius: 5px;
+  }
+
+  .titulo {
+    font-weight: bold;
+    margin-top: 0.5rem;
+  }
+}
+
+// 🌐 Media Queries para responsividad
+
+// Móviles (hasta 575px)
+@media (max-width: 575px) {
+  body {
+    background-color: #ffe6f0; // Rosa claro para ver que funciona
+  }
+
+  header {
+    padding: 0.5rem;
+
+    h1 {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
+
+  .btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .producto {
+    padding: 0.5rem;
+    margin-bottom: 0.75rem;
+
+    .titulo {
+      font-size: 1rem;
+      text-align: center;
+    }
+  }
+}
+
+// Tablets (576px a 768px)
+@media (min-width: 576px) and (max-width: 768px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  .btn {
+    font-size: 1rem;
+  }
+
+  .producto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      max-width: 80%;
+    }
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.logorotativo {
+  animation: pulse 2s infinite ease-in-out;
+}
