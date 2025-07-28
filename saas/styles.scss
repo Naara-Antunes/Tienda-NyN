@@ -17,7 +17,23 @@ body {
   background-color: var(--color-fondo);
   color: var(--color-principal);
 }
+.menu-lateral {
+  background: linear-gradient(270deg, #ff90b3, #ffe484, #baffc9);
+  background-size: 600% 600%;
+  animation: degradadoAnimado 10s ease infinite;
+}
 
+@keyframes degradadoAnimado {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 /*HEADER */
 header {
   padding: 1rem;
